@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from main.models import Recipe, Ingredient, Difficulty, Diet, Type, Cuisine
+from main.models import *
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    created_by = serializers.CharField(read_only=True)
+    # created_by = serializers.CharField(read_only=True)
 
     class Meta:
         model = Recipe
