@@ -11,8 +11,8 @@ from main.models import *
 
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    ccal = serializers.IntegerField(read_only=True)
-    rating = serializers.IntegerField(read_only=True)
+    ccal = serializers.IntegerField(read_only=True, required=False)
+    rating = serializers.IntegerField(read_only=True, required=False)
     # created_by = serializers.CharField(read_only=True)
 
     class Meta:
