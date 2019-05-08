@@ -19,8 +19,6 @@ class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
-@property
-    def
 
 
 class IngredientList(generics.ListCreateAPIView):
