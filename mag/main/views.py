@@ -19,6 +19,12 @@ class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
+<<<<<<< HEAD
+=======
+    # @property
+    # def calories(self):
+    #     return self.ingredients.id
+>>>>>>> 818e98dc2bc2bbc3330e67220527811ee3f8d368
 
 
 class IngredientList(generics.ListCreateAPIView):
