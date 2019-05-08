@@ -79,3 +79,20 @@ class DietV(generics.RetrieveUpdateAPIView):
 class CuisineV(generics.RetrieveUpdateAPIView):
     queryset = Cuisine.objects.all()
     serializer_class = CuisineSerializer
+
+
+class LikeView(APIView):
+    def get_object(self, pk):
+        try:
+            return Recipe.objects.get(id=pk)
+        except Recipe.DoesNotExist as e:
+            raise Http404
+
+    def put(self, request, pk):
+        recipe = self.get_object(pk)
+        serializer = LikeSerializer(instance=recipe, data=request.data)
+        if serializer.is_valid():
+            recipe.likes +=1
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

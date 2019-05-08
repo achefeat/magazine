@@ -4,12 +4,13 @@ export interface Recipe {
   ingredients: Ingredient[];
   method: string;
   ccal: number;
-  rating: number;
+  likes: number;
   type: Type;
   time: number;
   cuisine: Cuisine;
   diet: Diet;
   difficulty: Difficulty;
+  photo: string;
 }
 export interface Ingredient {
   id: number;

@@ -1,5 +1,14 @@
 <div *ngFor="let r of recipes">
-  {{r.name}}::{{r.cuisine.name}}::{{r.type.name}}::{{r.diet.name}}::{{r.difficulty.name}}
+  <h2>{{r.cuisine.name}} {{r.name}}</h2>
+  <div>
+    <h5>Best for: {{r.type.name}}</h5>
+    <h5>Diet type: {{r.diet.name}}</h5>
+    <h5>Difficulty: {{r.difficulty.name}}</h5>
+    <h5>{{r.ccal}} calories per 100g</h5>
+    <h5>Will be ready in {{r.time}} minutes</h5>
+    <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>
+  </div>
+<!--  <img alt="pancake" src={{r.photo}}>-->
   <div *ngFor="let i of r.ingredients">
     {{i.name}}
   </div>
