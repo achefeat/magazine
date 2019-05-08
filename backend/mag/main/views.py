@@ -8,55 +8,39 @@ from rest_framework.views import APIView
 from django.http import Http404
 from main.models import Recipe, Ingredient, Difficulty, Diet, Type, Cuisine
 from main.serializers import *
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
 # Create your views here.
 
 
-class RecipeNewV(generics.ListCreateAPIView):
+class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
 
-# class IngredientNewV(generics.ListCreateAPIView):
-#     permission_classes = (AllowAny,)
-#     queryset = Ingredient.objects.all()
-#     serializer_class = IngredientSerializer
+class IngredientList(generics.ListCreateAPIView):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
 
 
-class IngredientNewV(APIView):
-     permission_classes = (AllowAny,)
-
-    def get(self, request):
-        ing = Ingredient.objects.all()
-        serializer = IngredientSerializer(ing, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def post(self, request):
-        serializer = IngredientSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-class DifficultyNewV(generics.ListCreateAPIView):
+class DifficultyList(generics.ListCreateAPIView):
     queryset = Difficulty.objects.all()
     serializer_class = DifficultySerializer
 
 
-class DietNewV(generics.ListCreateAPIView):
+class DietList(generics.ListCreateAPIView):
     queryset = Diet.objects.all()
     serializer_class = DietSerializer
 
 
-class TypeNewV(generics.ListCreateAPIView):
+class TypeList(generics.ListCreateAPIView):
     queryset = Type.objects.all()
     serializer_class = TypeSerializer
 
 
-class CuisineNewV(generics.ListCreateAPIView):
+class CuisineList(generics.ListCreateAPIView):
     queryset = Cuisine.objects.all()
     serializer_class = CuisineSerializer
 
@@ -73,9 +57,9 @@ class IngredientV(generics.RetrieveUpdateAPIView):
     serializer_class = IngredientSerializer
 
 
-class DifficultyV(generics.RetrieveUpdateAPIView):
-    queryset = Difficulty.objects.all()
-    serializer_class = DifficultySerializer
+# class DifficultyV(generics.RetrieveUpdateAPIView):
+#     queryset = Difficulty.objects.all()
+#     serializer_class = DifficultySerializer
 
 
 class DietV(generics.RetrieveUpdateAPIView):
@@ -83,9 +67,9 @@ class DietV(generics.RetrieveUpdateAPIView):
     serializer_class = DietSerializer
 
 
-class TypeV(generics.RetrieveUpdateAPIView):
-    queryset = Type.objects.all()
-    serializer_class = TypeSerializer
+# class TypeV(generics.RetrieveUpdateAPIView):
+#     queryset = Type.objects.all()
+#     serializer_class = TypeSerializer
 
 
 class CuisineV(generics.RetrieveUpdateAPIView):

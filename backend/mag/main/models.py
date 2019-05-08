@@ -28,15 +28,15 @@ class Cuisine(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
-    ingredients = models.ManyToManyField('Ingredient')
+    ingredients = models.ManyToManyField('Ingredient', related_name='recipes')
     method = models.TextField()
     ccal = models.IntegerField()
     time = models.IntegerField()
     type = models.ForeignKey(Type, on_delete=models.CASCADE, default=None)
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE, default=None)
-    rating = models.FloatField()
+    rating = models.IntegerField(default=None, null=True)
     difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE, default=None)
-    diet = models.ForeignKey(Diet, on_delete=models.CASCADE, default=None)
+    diet = models.ForeignKey(Diet, on_delete=models.CASCADE, default=1)
     # created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
 

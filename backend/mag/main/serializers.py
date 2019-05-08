@@ -3,14 +3,16 @@ from rest_framework import serializers
 from main.models import *
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email')
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('id', 'username', 'email')
 
 
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
+    ccal = serializers.IntegerField(read_only=True)
+    rating = serializers.IntegerField(read_only=True)
     # created_by = serializers.CharField(read_only=True)
 
     class Meta:

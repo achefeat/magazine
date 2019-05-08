@@ -4,11 +4,21 @@ from main import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls)
-    path('homerecipes/', views.RecipeV.as_view()),
-    path('homerecipes/newrecipe/', views.RecipeNewV.as_view()),
-    path('homerecipes/ingredients/', views.IngredientV.as_view()),
-    path('homerecipes/difficulty/', views.DifficultyV.as_view()),
-    path('homerecipes/cuisine/',views.CuisineV.as_view()),
-    path('homerecipes/type/', views.TypeV.as_view()),
-    path('homerecipes/diet/',views.DietV.as_view())
+    path('home/recipelist/', views.RecipeList.as_view()),
+    path('home/recipe/', views.RecipeV.as_view()),
+
+    path('home/ingredientlist/', views.IngredientList.as_view()),
+    path('home/ingredient/', views.IngredientV.as_view()),
+
+    path('home/difficultylist/', views.DifficultyList.as_view()),
+    # path('home/difficulty/', views.DifficultyV.as_view()),
+
+    path('home/cuisinelist/',views.CuisineList.as_view()),
+    path('home/cuisine/', views.CuisineV.as_view()),
+
+    path('home/typelist/', views.TypeList.as_view()),
+    # path('home/type/', views.TypeV.as_view()),
+
+    path('home/dietlist/',views.DietList.as_view()),
+    path('home/diet/',views.DietV.as_view())
 ]
