@@ -18,8 +18,9 @@ from rest_framework import status
 class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-    # nuzhno perepisat recipeView
-    # id ingredients -> ccal
+
+@property
+    def
 
 
 class IngredientList(generics.ListCreateAPIView):
