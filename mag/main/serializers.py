@@ -8,31 +8,21 @@ from main.models import *
 #         model = User
 #         fields = ('id', 'username', 'email')
 
-
-class RecipeSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-    ccal = serializers.IntegerField(read_only=True, required=False)
-    rating = serializers.IntegerField(read_only=True, required=False)
-    # created_by = serializers.CharField(read_only=True)
-
-    class Meta:
-        model = Recipe
-        fields = ('__all__')
-
-
 class IngredientSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Ingredient
-        fields = ('__all__')
+        fields = ('id', 'name')
+        # fields = ('__all__')
+
 
 class DifficultySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Difficulty
-        fields = ('__all__')
+        fields = ('id', 'name')
 
 
 class DietSerializer(serializers.ModelSerializer):
@@ -40,7 +30,8 @@ class DietSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Diet
-        fields = ('__all__')
+        fields = ('id', 'name')
+        # fields = ('__all__')
 
 
 class CuisineSerializer(serializers.ModelSerializer):
@@ -48,7 +39,7 @@ class CuisineSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cuisine
-        fields = ('__all__')
+        fields = ('name', 'id')
 
 
 class TypeSerializer(serializers.ModelSerializer):
@@ -56,4 +47,22 @@ class TypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Type
-        fields = ('__all__')
+        fields = ('id', 'name')
+        # fields = ('__all__')
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    ccal = serializers.IntegerField(read_only=True, required=False)
+    rating = serializers.IntegerField(read_only=True, required=False)
+    ingredients = IngredientSerializer(many=True)
+    cuisine = CuisineSerializer()
+    diet = DietSerializer()
+    type = TypeSerializer()
+    difficulty = DifficultySerializer()
+    # created_by = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = Recipe
+        fields = (
+        'id', 'name', 'ingredients', 'method', 'ccal', 'time', 'type', 'cuisine', 'rating', 'difficulty', 'diet')

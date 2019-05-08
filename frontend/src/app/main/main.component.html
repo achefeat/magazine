@@ -1,3 +1,6 @@
-<p>
-  main works!
-</p>
+<div *ngFor="let r of recipes">
+  {{r.name}}::{{r.cuisine.name}}::{{r.type.name}}::{{r.diet.name}}::{{r.difficulty.name}}
+  <div *ngFor="let i of r.ingredients">
+    {{i.name}}
+  </div>
+</div>
