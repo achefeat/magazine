@@ -48,6 +48,11 @@ class CuisineList(generics.ListCreateAPIView):
     queryset = Cuisine.objects.all()
     serializer_class = CuisineSerializer
 
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comments.objects.all()
+    serializer_class = CommentSerializer
+
 # =========================================
 
 
@@ -79,6 +84,11 @@ class DietV(generics.RetrieveUpdateAPIView):
 class CuisineV(generics.RetrieveUpdateAPIView):
     queryset = Cuisine.objects.all()
     serializer_class = CuisineSerializer
+
+
+class CommentV(generics.RetrieveDestroyAPIView):
+    queryset = Comments.objects.all()
+    serializer_class = CommentSerializer
 
 
 class LikeView(APIView):

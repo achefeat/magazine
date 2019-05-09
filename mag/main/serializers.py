@@ -42,6 +42,14 @@ class CuisineSerializer(serializers.ModelSerializer):
         fields = ('name', 'id')
 
 
+class CommentSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Cuisine
+        fields = ('description', 'id')
+
+
 class TypeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
 
@@ -65,6 +73,7 @@ class LikeSerializer(serializers.ModelSerializer):
     type = TypeSerializer(required=False)
     difficulty = DifficultySerializer(required=False)
     photo = serializers.ImageField(required=False)
+    comments = CommentSerializer()
 
     class Meta:
         model = Recipe
@@ -81,6 +90,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     type = TypeSerializer()
     difficulty = DifficultySerializer()
     photo = serializers.ImageField()
+    comments = CommentSerializer()
     # created_by = serializers.CharField(read_only=True)
 
     class Meta:
