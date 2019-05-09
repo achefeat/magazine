@@ -30,6 +30,7 @@
     border: 0px solid white;
     align-items: center;
     /* justify-content: flex-start; */
+    margin-bottom: 1px;
 }
 .mainBlock2{
     flex-direction: column;

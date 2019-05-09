@@ -9,13 +9,15 @@ import { HeaderComponent } from './header/header.component';
 import {ProviderService} from './services/provider.service';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

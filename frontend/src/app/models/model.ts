@@ -32,3 +32,8 @@ export interface Diet {
   id: number;
   name: string;
 }
+export interface Comments {
+  id: number;
+  description: string;
+  recipes: Recipe[];
+}

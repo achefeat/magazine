@@ -1,5 +1,5 @@
 <div *ngFor="let r of recipes" id="recipelist">
-  <h2>{{r.cuisine.name}} {{r.name}}</h2>
+  <h2 routerLink="/recipe" routerLinkActive="">{{r.cuisine.name}} {{r.name}}</h2>
   <div>
     <h5>Best for: {{r.type.name}}</h5>
     <h5>Diet type: {{r.diet.name}}</h5>
@@ -8,8 +8,10 @@
     <h5>Will be ready in {{r.time}} minutes</h5>
     <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>
   </div>
-<!--  <img alt="pancake" src={{r.photo}}>-->
-  <div *ngFor="let i of r.ingredients">
-    {{i.name}}
+  <div>
+    <img [src]="r.photo">
   </div>
+  <!--  <div *ngFor="let i of r.ingredients">-->
+<!--    {{i.name}}-->
+<!--  </div>-->
 </div>

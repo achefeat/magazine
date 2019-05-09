@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
 
   constructor(private provider: ProviderService ) {}
   public recipes: Recipe[] = [];
+  public recipe: Recipe;
   public ingredients: Ingredient[] = [];
 
   ngOnInit() {
@@ -21,5 +22,10 @@ export class MainComponent implements OnInit {
   likeRecipe(recipe: Recipe) {
     this.provider.like(recipe).then(res => {});
   }
+  // getCurRecipe(recipe: Recipe) {
+  //   this.provider.getCurrentRecipe(recipe).then(res => {
+  //     this.recipe = res;
+  //   });
+  // }
 }
 

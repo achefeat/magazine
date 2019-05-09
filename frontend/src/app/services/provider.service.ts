@@ -16,9 +16,12 @@ export class ProviderService extends MainService {
   }
   // createRecipe()
   like(recipe: Recipe): Promise<Recipe[]> {
-    return this.put(`http://localhost:8000/home/recipe/like/${recipe.id}`, {
+    return this.put(`http://localhost:8000/home/recipe/like/${recipe.id}/`, {
       likes: recipe.likes
     });
+  }
+  getCurrentRecipe(recipe: Recipe): Promise<Recipe> {
+    return this.get(`http://localhost:8000/home/recipe/${recipe.id}/`, {});
   }
 
 }

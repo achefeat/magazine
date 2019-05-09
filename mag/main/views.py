@@ -19,9 +19,9 @@ class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
-    # @property
-    # def calories(self):
-    #     return self.ingredients.id
+
+# class RecipeDetail(generics.ListAPIView):
+#     serializer_class = RecipeSerializer
 
 
 class IngredientList(generics.ListCreateAPIView):
@@ -49,9 +49,16 @@ class CuisineList(generics.ListCreateAPIView):
     serializer_class = CuisineSerializer
 
 
-class CommentList(generics.ListCreateAPIView):
-    queryset = Comments.objects.all()
+class CommentDetail(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        try:
+            recipe = Recipe.objects.get(id=self.kwargs['pk'])
+        except Comments.DoesNotExist:
+            raise Http404
+        return recipe.comments.all()
+
 
 # =========================================
 
@@ -64,26 +71,6 @@ class RecipeV(generics.RetrieveUpdateAPIView):
 class IngredientV(generics.RetrieveUpdateAPIView):
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
-
-
-# class DifficultyV(generics.RetrieveUpdateAPIView):
-#     queryset = Difficulty.objects.all()
-#     serializer_class = DifficultySerializer
-
-
-class DietV(generics.RetrieveUpdateAPIView):
-    queryset = Diet.objects.all()
-    serializer_class = DietSerializer
-
-
-# class TypeV(generics.RetrieveUpdateAPIView):
-#     queryset = Type.objects.all()
-#     serializer_class = TypeSerializer
-
-
-class CuisineV(generics.RetrieveUpdateAPIView):
-    queryset = Cuisine.objects.all()
-    serializer_class = CuisineSerializer
 
 
 class CommentV(generics.RetrieveDestroyAPIView):
