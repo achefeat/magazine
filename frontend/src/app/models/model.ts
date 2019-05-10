@@ -12,7 +12,7 @@ export interface Recipe {
   cuisine: Cuisine;
   diet: Diet;
   difficulty: Difficulty;
-  // photo: string;
+  photo: string;
 }
 export interface Ingredient {
   id: number;

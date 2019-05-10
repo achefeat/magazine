@@ -56,7 +56,7 @@ class Recipe(models.Model):
     # likes = models.IntegerField(default=None, null=True)
     difficulty = models.ForeignKey(Difficulty, on_delete=models.DO_NOTHING, default=None)
     diet = models.ForeignKey(Diet, on_delete=models.DO_NOTHING, default=1)
-    photo = models.ImageField(upload_to='images', default=None, null=True, blank=True)
+    photo = models.ImageField(upload_to='media', default=None, null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):

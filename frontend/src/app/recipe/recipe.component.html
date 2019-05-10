@@ -11,7 +11,7 @@
 <!--        <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>-->
       </div>
       <div>
-        <img [src]="recipe.photo">
+        <img [src]="recipe.photo" alt="photo">
       </div>
         <div *ngFor="let i of recipe.ingredients">
           {{i.name}}
