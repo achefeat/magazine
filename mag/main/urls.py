@@ -28,7 +28,7 @@ urlpatterns = [
     path('home/dietlist/',views.DietList.as_view()),
     # path('home/diet/',views.DietV.as_view()),
 
-    path('home/recipe/like/<int:pk>/', views.LikeView.as_view()),
+    path('home/recipe/like/', views.like_recipe),
     path('home/recipe/<int:pk>/comments/', views.CommentDetail.as_view()),
 
 ]

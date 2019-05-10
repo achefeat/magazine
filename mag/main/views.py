@@ -13,6 +13,7 @@ from main.serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -112,20 +113,14 @@ class CommentV(generics.RetrieveDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
 
-class LikeView(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get_object(self, pk):
-        try:
-            return Recipe.objects.get(id=pk)
-        except Recipe.DoesNotExist as e:
-            raise Http404
-
-    def put(self, request, pk):
-        recipe = self.get_object(pk)
-        serializer = LikeSerializer(instance=recipe, data=request.data)
-        if serializer.is_valid():
-            recipe.likes +=1
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+@api_view(['POST', ])
+def like_recipe(request):
+    recipe = get_object_or_404(Recipe, id=request.POST.get('id'))
+    is_liked = False
+    if recipe.likes.filter(id=request.user.id).exists():
+        recipe.likes.remove(request.user)
+        is_liked=False
+    else:
+        recipe.likes.add(request.user)
+        is_liked=True
+    return Http404

@@ -11,6 +11,18 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
+#
+#
+# class Likes(models.Model):
+#     liked_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+#
+#     def __str__(self):
+#         name = 'likes'
+#         return name
+#
+#     class Meta:
+#         verbose_name= 'Like'
+#         verbose_name_plural= 'Likes'
 
 
 class Difficulty(models.Model):
@@ -53,7 +65,7 @@ class Recipe(models.Model):
     time = models.IntegerField()
     type = models.ForeignKey(Type, on_delete=models.DO_NOTHING, default=None)
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE, default=None)
-    # likes = models.IntegerField(default=None, null=True)
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
     difficulty = models.ForeignKey(Difficulty, on_delete=models.DO_NOTHING, default=None)
     diet = models.ForeignKey(Diet, on_delete=models.DO_NOTHING, default=1)
     photo = models.ImageField(upload_to='media', default=None, null=True, blank=True)
@@ -75,15 +87,3 @@ class Comments(models.Model):
         verbose_name ='Comment'
         verbose_name_plural ='Comments'
 
-
-class Likes(models.Model):
-    liked_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=None, related_name='likes')
-
-    def __str__(self):
-        name = 'likes'
-        return name
-
-    class Meta:
-        verbose_name= 'Like'
-        verbose_name_plural= 'Likes'

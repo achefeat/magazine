@@ -55,10 +55,19 @@ class TypeSerializer(serializers.ModelSerializer):
         # fields = ('__all__')
 
 
+# class LikeSerializer(serializers.ModelSerializer):
+#     id = serializers.IntegerField(read_only=True)
+#     liked_by = UserSerializer(read_only=True)
+#
+#     class Meta:
+#         model = Likes
+#         fields = ('liked_by')
+
+
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     ccal = serializers.IntegerField(read_only=True, required=False)
-    # likes = serializers.IntegerField(read_only=True, required=False)
+    likes = UserSerializer(read_only=True, many=True)
     ingredients = IngredientSerializer(many=True)
     cuisine = CuisineSerializer()
     diet = DietSerializer()
@@ -71,15 +80,6 @@ class RecipeSerializer(serializers.ModelSerializer):
         model = Recipe
         fields = ('id', 'name', 'ingredients', 'method', 'ccal', 'time', 'type', 'cuisine', 'likes', 'difficulty', 'diet', 'photo', 'comments', 'created_by')
 
-
-class LikeSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(required=False)
-    liked_by = UserSerializer(read_only=True)
-    recipe = RecipeSerializer(many=True)
-
-    class Meta:
-        model = Likes
-        fields = ('liked_by', 'recipe')
 
 
 class CommentSerializer(serializers.ModelSerializer):
