@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ClassProvider, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,8 +8,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import {ProviderService} from './services/provider.service';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RecipeComponent } from './recipe/recipe.component';
+import { SignupComponent } from './signup/signup.component';
+import {AuthInterceptor} from './AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { RecipeComponent } from './recipe/recipe.component';
     MainComponent,
     FooterComponent,
     HeaderComponent,
-    RecipeComponent
+    RecipeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -26,12 +29,12 @@ import { RecipeComponent } from './recipe/recipe.component';
     FormsModule
   ],
   providers: [
-    ProviderService
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // } as ClassProvider
+    ProviderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    } as ClassProvider
   ],
   bootstrap: [AppComponent]
 })

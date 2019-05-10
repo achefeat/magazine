@@ -13,6 +13,10 @@ urlpatterns = [
     path('home/difficultylist/', views.DifficultyList.as_view()),
     # path('home/difficulty/', views.DifficultyV.as_view()),
 
+    path('home/userlist/', views.UserList.as_view()),
+    path('home/login/', views.login),
+    path('home/logout/', views.logout),
+
     path('home/cuisinelist/',views.CuisineList.as_view()),
     # path('home/cuisine/', views.CuisineV.as_view()),
 

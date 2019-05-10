@@ -1,5 +1,11 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
 <div>
-<!--  <app-footer></app-footer>-->
+  <ng-container *ngIf="!logged">
+    <div class="authorization">
+      <div><input type="text" [(ngModel)]="username"></div>
+      <div><input type="password" [(ngModel)]="password"></div>
+      <div><button routerLink="/main" (click)="auth()">Log in</button></div>
+    </div>
+  </ng-container>
 </div>

@@ -1,16 +1,18 @@
+// import {realpath} from 'fs';
+
 export interface Recipe {
   id: number;
   name: string;
   ingredients: Ingredient[];
   method: string;
   ccal: number;
-  likes: number;
+  // likes: number;
   type: Type;
   time: number;
   cuisine: Cuisine;
   diet: Diet;
   difficulty: Difficulty;
-  photo: string;
+  // photo: string;
 }
 export interface Ingredient {
   id: number;
@@ -36,4 +38,7 @@ export interface Comments {
   id: number;
   description: string;
   recipes: Recipe[];
+}
+export interface IAuthResponse {
+  token: string;
 }
