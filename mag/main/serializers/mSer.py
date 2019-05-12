@@ -20,32 +20,6 @@ class IngredientSerializer(serializers.ModelSerializer):
         # fields = ('__all__')
 
 
-class DifficultySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-
-    class Meta:
-        model = Difficulty
-        fields = ('id', 'name')
-
-
-class DietSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-
-    class Meta:
-        model = Diet
-        fields = ('id', 'name')
-        # fields = ('__all__')
-
-
-class CuisineSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(read_only=True)
-
-    class Meta:
-        model = Cuisine
-        fields = ('name', 'id')
-
-
-
 class TypeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
 

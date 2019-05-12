@@ -12,6 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RecipeComponent } from './recipe/recipe.component';
 import { SignupComponent } from './signup/signup.component';
 import {AuthInterceptor} from './AuthInterceptor';
+import { MyrecipesComponent } from './myrecipes/myrecipes.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AuthInterceptor} from './AuthInterceptor';
     FooterComponent,
     HeaderComponent,
     RecipeComponent,
-    SignupComponent
+    SignupComponent,
+    MyrecipesComponent
   ],
   imports: [
     BrowserModule,
