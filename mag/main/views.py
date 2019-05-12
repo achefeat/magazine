@@ -114,9 +114,11 @@ def like_recipe(request):
 
 
 class RecipeV(generics.RetrieveUpdateAPIView):
-    queryset = Recipe.objects.all()
+    queryset = Recipe.objects.all() #HEEEEEEEEEEEEELP comments id
     serializer_class = RecipeSerializer
     permission_classes = (IsAuthenticated,)
+
+
 
 
 class IngredientV(generics.RetrieveUpdateAPIView):

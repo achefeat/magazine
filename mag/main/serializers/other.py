@@ -67,19 +67,19 @@ class TypeSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     ccal = serializers.IntegerField(read_only=True, required=False)
-    likes = UserSerializer(read_only=True, many=True)
+    # likes = UserSerializer(read_only=True, many=True)
     ingredients = IngredientSerializer(many=True)
     cuisine = CuisineSerializer()
     diet = DietSerializer()
     type = TypeSerializer()
     difficulty = DifficultySerializer()
     photo = serializers.ImageField()
+    # comments = UserSerializer(read_only=True, many=True)
     created_by = UserSerializer(read_only=True)
 
     class Meta:
         model = Recipe
         fields = ('id', 'name', 'ingredients', 'method', 'ccal', 'time', 'type', 'cuisine', 'likes', 'difficulty', 'diet', 'photo', 'comments', 'created_by')
-
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -89,4 +89,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comments
-        fields = ('description', 'created_by')
+        fields = ('id','description', 'created_by')
