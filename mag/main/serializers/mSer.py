@@ -1,6 +1,3 @@
-from django.contrib.auth.models import User
-from rest_framework import serializers
-from main.models import *
 from .ser import *
 
 
@@ -30,13 +27,15 @@ class TypeSerializer(serializers.ModelSerializer):
         # fields = ('__all__')
 
 
-# class LikeSerializer(serializers.ModelSerializer):
-#     id = serializers.IntegerField(read_only=True)
-#     liked_by = UserSerializer(read_only=True)
-#
-#     class Meta:
-#         model = Likes
-#         fields = ('liked_by')
+class LikeSerializer(serializers.ModelSerializer):
+    liked_by = serializers.HiddenField(
+        write_only=True,
+        default=serializers.CurrentUserDefault()
+    )
+
+    class Meta:
+        model = Like
+        fields = ('liked_by', 'recipe',)
 
 
 class RecipeSerializer(serializers.ModelSerializer):
@@ -54,7 +53,9 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Recipe
-        fields = ('id', 'name', 'ingredients', 'method', 'ccal', 'time', 'type', 'cuisine', 'likes', 'difficulty', 'diet', 'photo', 'comments', 'created_by')
+        fields = (
+            'id', 'name', 'ingredients', 'method', 'ccal', 'time', 'type', 'cuisine', 'likes', 'difficulty', 'diet',
+            'photo', 'comments', 'created_by')
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -64,4 +65,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comments
-        fields = ('id','description', 'created_by')
+        fields = ('id', 'description', 'created_by')
