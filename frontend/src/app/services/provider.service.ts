@@ -14,7 +14,20 @@ export class ProviderService extends MainService {
   getRecipes(): Promise<Recipe[]> {
     return this.get('http://localhost:8000/home/recipelist/', {});
   }
-  // createRecipe()
+  createRecipe(rname: string, ringredients: Ingredient[], rmethod: string, rccal: number, rtype: Type,
+               rtime: number, rcuisine: Cuisine, rdiet: Diet, rdifficulty: Difficulty, rphoto: string): Promise<Recipe> {
+    return this.post(`http://localhost:8000/home/recipe/`, {
+      name: rname,
+      ingredients: ringredients,
+      ccal: rccal,
+      type: rtype,
+      time: rtime,
+      cuisine: rcuisine,
+      diet: rdiet,
+      difficulty: rdifficulty,
+      photo: rphoto
+    });
+  }
   // like(recipe: Recipe): Promise<Recipe[]> {
   //   return this.put(`http://localhost:8000/home/recipe/like/${recipe.id}/`, {
   //     likes: recipe.likes,

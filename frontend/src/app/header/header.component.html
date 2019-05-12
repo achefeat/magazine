@@ -8,7 +8,7 @@
 <!--      <li class="list"> <a class="list listLinks" routerLink="/about">Home</a></li>-->
 
 <!--    </div>-->
-    <div class="menu" *ngFor="let c of cuisine">
+<!--    <div class="menu" *ngFor="let c of cuisine">-->
       <li class="header"> Cuisine </li>
       <li> <hr> </li>
 
@@ -16,7 +16,7 @@
 <!--      <li class="list"> <a class="list listLinks" routerLink="/menu">Mexican</a></li>-->
 <!--      <li class="list"> <a class="list listLinks" routerLink="/menu">American</a></li>-->
 <!--      <li class="list"> <a class="list listLinks" routerLink="/menu">British</a></li>-->
-    </div>
+<!--    </div>-->
     <div class="diet">
       <li class="header"> Diet </li>
       <li> <hr> </li>
@@ -38,10 +38,10 @@
     </div>
 
     <div class="other">
-      <li class="header"> Account </li>
+      <li class="header" routerLink="/myRecipes"> Account </li>
       <li> <hr> </li>
-      <li class="list"> <a class="list listLinks" routerLink="/users/{{imUsername}}">My Account</a>  </li>
-      <li class="list" ><a class="list listLinks" routerLink="/order">My Recipes</a></li>
+<!--      <li class="list"> <a class="list listLinks" routerLink="/users/{{imUsername}}">My Account</a>  </li>-->
+<!--      <li class="list" ><a class="list listLinks" routerLink="/order">My Recipes</a></li>-->
 
     </div>
   </div>

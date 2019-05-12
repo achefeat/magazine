@@ -1,3 +1,32 @@
-<p>
-  myrecipes works!
-</p>
+<form>
+  <div class="form-group">
+    <label for="nameOfRecipe">First Name</label>
+    <input [(ngModel)]="name"
+      id="nameOfRecipe" type="text" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="method">Method</label>
+    <textarea id="method" cols="50" rows="10" class="form-control"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="ingredients">List of ingredients</label>
+    <input id="ingredients">
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+id: number;
+name: string;
+ingredients: Ingredient[];
+method: string;
+ccal: number;
+type: Type;
+time: number;
+cuisine: Cuisine;
+diet: Diet;
+difficulty: Difficulty;
+photo: string;
