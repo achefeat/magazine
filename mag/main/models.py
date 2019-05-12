@@ -1,5 +1,6 @@
-from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django.db import models
 
 
 # Create your models here.
@@ -11,26 +12,26 @@ class Ingredient(models.Model):
 
     def __str__(self):
         return self.name
-#
-#
-# class Likes(models.Model):
-#     liked_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-#
-#     def __str__(self):
-#         name = 'likes'
-#         return name
-#
-#     class Meta:
-#         verbose_name= 'Like'
-#         verbose_name_plural= 'Likes'
+
+
+class Like(models.Model):
+    liked_by = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE, related_name='likes')
+    recipe = models.ForeignKey(to='main.Recipe', on_delete=models.CASCADE, related_name='likes')
+
+    def __str__(self):
+        return f'{self.id} like by {self.liked_by.username} of {self.recipe.id} recipe'
+
+    class Meta:
+        verbose_name = 'Like'
+        verbose_name_plural = 'Likes'
 
 
 class Difficulty(models.Model):
     name = models.CharField(max_length=200)
 
     class Meta:
-        verbose_name ='Difficulty'
-        verbose_name_plural ='Difficulties'
+        verbose_name = 'Difficulty'
+        verbose_name_plural = 'Difficulties'
 
     def __str__(self):
         return self.name
@@ -65,7 +66,6 @@ class Recipe(models.Model):
     time = models.IntegerField()
     type = models.ForeignKey(Type, on_delete=models.DO_NOTHING, default=None)
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE, default=None)
-    likes = models.ManyToManyField(User, blank=True, related_name='likes')
     difficulty = models.ForeignKey(Difficulty, on_delete=models.DO_NOTHING, default=None)
     diet = models.ForeignKey(Diet, on_delete=models.DO_NOTHING, default=1)
     photo = models.ImageField(upload_to='media', default=None, null=True, blank=True)
@@ -84,6 +84,5 @@ class Comments(models.Model):
         return self.description
 
     class Meta:
-        verbose_name ='Comment'
-        verbose_name_plural ='Comments'
-
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
