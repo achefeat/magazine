@@ -18,7 +18,7 @@ export class RecipeComponent implements OnInit {
     this.getCurRecipe(this.recipe);
   }
   getCurRecipe(recipe: Recipe) {
-    this.provider.getCurrentRecipe(recipe).then(res => {
+    this.provider.getCurrentRecipe(recipe.id).then(res => {
       this.recipe = res;
     });
   }

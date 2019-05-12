@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {MainService} from './main.service';
-import {Cuisine, Diet, Difficulty, IAuthResponse, Ingredient, Recipe, Type} from '../models/model';
+import {Cuisine, Diet, Difficulty, IAuthResponse, Ingredient, Likes, Recipe, Type} from '../models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,13 @@ export class ProviderService extends MainService {
   //     // photo: recipe.photo
   //   });
   // }
-  getCurrentRecipe(recipe: Recipe): Promise<Recipe> {
-    return this.get(`http://localhost:8000/home/recipe/${recipe.id}/`, {});
+  like(recipe: Recipe, likes: Likes): Promise<Recipe> {
+    return this.put(`http://localhost:8000/home/recipe/like/`, {
+      likes: likes.recipes
+    });
+  }
+  getCurrentRecipe(id: number): Promise<Recipe> {
+    return this.get(`http://localhost:8000/home/recipe/${id}/`, {});
   }
   auth(uname: any, pword: any): Promise<IAuthResponse> {
     return this.post('http://localhost:8000/home/login/', {

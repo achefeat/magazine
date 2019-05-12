@@ -14,6 +14,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -90,6 +91,23 @@ class CommentDetail(generics.ListCreateAPIView):
             raise Http404
         return recipe.comments.all()
 
+# class LikeRecipe(generics.CreateAPIView):
+#     serializer_class = LikeRecipe
+#     permission_classes = (IsAuthenticated,)
+
+
+# @api_view(['POST', ])
+def like_recipe(request):
+    recipe = get_object_or_404(Recipe, id=request.POST.get('id'))
+    is_liked = False
+    if recipe.likes.filter(id=request.user.id).exists():
+        recipe.likes.remove(request.user)
+        is_liked=False
+    else:
+        recipe.likes.add(request.user)
+        is_liked=True
+    return Http404
+    # return HttpResponseRedirect(recipe.get_absolute_url())
 
 # =========================================
 # class UserV(generics.RetrieveDestroyAPIV)
@@ -112,15 +130,3 @@ class CommentV(generics.RetrieveDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = (IsAuthenticated,)
 
-
-@api_view(['POST', ])
-def like_recipe(request):
-    recipe = get_object_or_404(Recipe, id=request.POST.get('id'))
-    is_liked = False
-    if recipe.likes.filter(id=request.user.id).exists():
-        recipe.likes.remove(request.user)
-        is_liked=False
-    else:
-        recipe.likes.add(request.user)
-        is_liked=True
-    return Http404

@@ -1,6 +1,6 @@
 <div>
   <ng-container>
-    <div>
+    <div class="image">
       <h2>{{recipe.cuisine.name}} {{recipe.name}}</h2>
       <div>
         <h5>Best for: {{recipe.type.name}}</h5>
@@ -11,7 +11,7 @@
 <!--        <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>-->
       </div>
       <div>
-        <img [src]="recipe.photo" alt="photo">
+<!--        <img [src]="recipe.photo" alt="photo">-->
       </div>
         <div *ngFor="let i of recipe.ingredients">
           {{i.name}}
