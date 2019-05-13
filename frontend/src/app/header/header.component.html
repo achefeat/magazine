@@ -1,4 +1,5 @@
 <div class="mainBlock">
+  <img src="../../assets/logo_transparent.png" id="img">
   <div class="mainBlock1">
     <div class="menu"> 
       <span class="header">Difficulty </span>
@@ -21,25 +22,13 @@
             <span class="list"><a class="list listLinks">{{t.name}}</a></span>
           </div>
     </div> 
-    <!-- <div class="diet">
-      <span class="header"> Diet </span>
-      <span> <hr> </span>
-      <div *ngFor="let d of diet ">
-       
-        <span class="list">{{d.name}}</span>
-      
-    </div>
-    <div class="type">
-      <span class="header">Meal Type </span>
-      <span><hr> </span>
-      <span class="header" *ngFor="let t of types"> Meal Type </span>
-      <li>{{t.name}}</li>
-    </div>
-
-    <div class="other">
-      <li class="header" routerLink="/myRecipes"> Account </li>
-      <li> <hr> </li>
-      </div>
-    </div>  -->
+    <div class="cuisine"> 
+        <span class="header">Cuisine </span>
+        <span><hr> </span>
+        <div *ngFor="let c of cuisine ">
+          <span class="list"><a class="list listLinks">{{c.name}}</a></span>
+        </div>
+      </div> 
+  
   </div>
 </div>

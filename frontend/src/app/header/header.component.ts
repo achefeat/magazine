@@ -10,7 +10,8 @@ import {Cuisine, Ingredient, Recipe, Type, Difficulty, Diet} from '../models/mod
 export class HeaderComponent implements OnInit {
   public types: Type[] = [];  
   public diff: Difficulty[] = [];  
-  public diet: Diet[] = []
+  public diet: Diet[] = [];
+  public cuisine: Cuisine[]= [];
   constructor(private provider: ProviderService ) {}
 
 
@@ -23,6 +24,9 @@ export class HeaderComponent implements OnInit {
     });
     this.provider.getDiets().then(res => {
       this.diet = res;
+    });
+    this.provider.getCuisine().then(res => {
+      this.cuisine = res;
     });
   }
 
