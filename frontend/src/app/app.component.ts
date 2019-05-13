@@ -28,10 +28,10 @@ export class AppComponent {
       });
     }
   }
-  // logout() {
-  //   this.provider.logout().then( res => {
-  //     localStorage.clear();
-  //     this.logged = false;
-  //   });
-  // }
+  logout() {
+    this.provider.logout().then( res => {
+      localStorage.clear();
+      this.logged = false;
+    });
+  }
 }

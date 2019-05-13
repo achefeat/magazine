@@ -1,3 +1,28 @@
-<p>
-  signup works!
-</p>
+<ng-container class="ng-header" *ngIf="!logged">
+  <div style="float: left">
+    <div>
+      <label for="user">Username</label>
+      <input id="user" type="text" [(ngModel)]="username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" [(ngModel)]="password">
+    </div>
+    <button class="but" (click)="auth()">LOG IN</button>
+  </div>
+  <div>
+    <div>
+      <label for="newuser">New Username</label>
+      <input id="newuser" type="text" [(ngModel)]="newusername">
+    </div>
+    <div>
+      <label for="email">E-mail</label>
+      <input id="email" type="text" [(ngModel)]="email">
+    </div>
+    <div>
+      <label for="newpassword">Password</label>
+      <input id="newpassword" type="password" [(ngModel)]="newpassword">
+    </div>
+    <button class="but" (click)="signup()">SIGN UP</button>
+  </div>
+</ng-container>

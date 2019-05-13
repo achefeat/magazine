@@ -4,6 +4,12 @@ from django.http import Http404
 from main.serializers import *
 
 
+class RecipeList(generics.ListAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = (AllowAny, )
+
+
 class DifficultyList(generics.ListAPIView):
     queryset = Difficulty.objects.all()
     serializer_class = DifficultySerializer
@@ -25,7 +31,7 @@ class TypeList(generics.ListAPIView):
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
 
 class CuisineList(generics.ListCreateAPIView):

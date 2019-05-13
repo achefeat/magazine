@@ -7,6 +7,7 @@ import {Cuisine, Diet, Difficulty, IAuthResponse, Ingredient, Likes, Recipe, Typ
   providedIn: 'root'
 })
 export class ProviderService extends MainService {
+  fileData: File = null;
 
   constructor(http: HttpClient) {
     super(http);
@@ -14,35 +15,34 @@ export class ProviderService extends MainService {
   getRecipes(): Promise<Recipe[]> {
     return this.get('http://localhost:8000/home/recipelist/', {});
   }
-  createRecipe(rname: string, ringredients: Ingredient[], rmethod: string, rccal: number, rtype: Type,
-               rtime: number, rcuisine: Cuisine, rdiet: Diet, rdifficulty: Difficulty, rphoto: string): Promise<Recipe> {
+  createRecipe(name: string, ingredients: Ingredient[], method: Text, ccal: number, time: number, type: Type, cuisine: Cuisine, diet: Diet): Promise<Recipe> {
     return this.post(`http://localhost:8000/home/recipe/`, {
-      name: rname,
-      ingredients: ringredients,
-      ccal: rccal,
-      type: rtype,
-      time: rtime,
-      cuisine: rcuisine,
-      diet: rdiet,
-      difficulty: rdifficulty,
-      photo: rphoto
+
     });
   }
-  // like(recipe: Recipe): Promise<Recipe[]> {
-  //   return this.put(`http://localhost:8000/home/recipe/like/${recipe.id}/`, {
-  //     likes: recipe.likes,
-  //     name: recipe.name,
-  //     ingredients: recipe.ingredients,
-  //     method: recipe.method,
-  //     ccal: recipe.ccal,
-  //     type: recipe.type,
-  //     time: recipe.time,
-  //     cuisine: recipe.cuisine,
-  //     diet: recipe.diet,
-  //     difficulty: recipe.difficulty,
-  //     // photo: recipe.photo
-  //   });
-  // }
+
+  fileProgress(fileInput: any) {
+    this.fileData = <File> fileInput.target.files[0];
+  }
+
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+    this.http.post('url/to/your/api', formData)
+      .subscribe(res => {
+        console.log(res);
+        alert('SUCCESS !!');
+      });
+  }
+  getTypes(): Promise<Type[]> {
+    return this.get('http://localhost:8000/home/typelist/', {});
+  }
+  getDiffs(): Promise<Difficulty[]> {
+    return this.get('http://localhost:8000/home/difficultylist/', {});
+  }
+  getDiets(): Promise<Diet[]> {
+    return this.get('http://localhost:8000/home/dietlist/', {});
+  }
   like(recipe: Recipe, likes: Likes): Promise<Recipe> {
     return this.put(`http://localhost:8000/home/recipe/like/`, {
       likes: likes.recipes
@@ -59,5 +59,12 @@ export class ProviderService extends MainService {
   }
   logout(): Promise<any> {
     return this.post(`http://localhost:8000/home/logout/`, {});
+  }
+  signup(username: string, email: string, password: string): Promise<any> {
+    return this.post('http://localhost:8000/shop/signup/', {
+      username,
+      email,
+      password
+    });
   }
 }

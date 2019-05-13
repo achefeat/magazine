@@ -4,7 +4,7 @@ export interface Recipe {
   id: number;
   name: string;
   ingredients: Ingredient[];
-  method: string;
+  method: Text;
   ccal: number;
   type: Type;
   time: number;
@@ -44,4 +44,5 @@ export interface Comments {
 }
 export interface IAuthResponse {
   token: string;
+  username: string;
 }

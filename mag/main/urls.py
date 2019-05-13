@@ -20,7 +20,7 @@ urlpatterns = [
     path('home/recipe/<int:pk>/comments/', views.CommentDetail.as_view()),
     path('home/likes/', views.LikeCreate.as_view()),
     # fbv
-    path('home/recipe/like/', views.like_recipe),
+    path('home/signup/', views.signup),
     path('home/ingredientlist/', views.showIngredients),
     path('home/login/', views.login),
     path('home/logout/', views.logout),

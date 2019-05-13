@@ -3,10 +3,13 @@ from .ser import *
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
+    password = serializers.CharField(write_only=True)
+    username = serializers.CharField(required=True)
+    email = serializers.EmailField(required=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name')
+        fields = ('id', 'username', 'password', 'email')
 
 
 class IngredientSerializer(serializers.ModelSerializer):

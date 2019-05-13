@@ -7,21 +7,20 @@ from rest_framework.views import APIView
 
 from main.serializers import *
 
-
-class RecipeList(APIView):
-    permission_classes = (AllowAny,)
-
-    def get(self, request):
-        recipeList = Recipe.objects.all()
-        serializer = RecipeSerializer(recipeList, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def post(self, request):
-        serializer = RecipeSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+# class RecipeList(APIView):
+#     permission_classes = (AllowAny,)
+    #
+    # def get(self, request):
+    #     recipeList = Recipe.objects.all()
+    #     serializer = RecipeSerializer(recipeList, many=True)
+    #     return Response(serializer.data, status=status.HTTP_200_OK)
+    #
+    # def post(self, request):
+    #     serializer = RecipeSerializer(data=request.data)
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class RecipeV(APIView):  # heeeeelp

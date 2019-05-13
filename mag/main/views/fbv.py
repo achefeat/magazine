@@ -24,17 +24,31 @@ def showIngredients(request):
     return Response({'error': 'bad request'}, status=status.HTTP_404_NOT_FOUND)
 
 
-@api_view(['POST', ])
-def like_recipe(request):
-    recipe = get_object_or_404(Recipe, id=request.POST.get('id'))
-    is_liked = False
-    if recipe.likes.filter(id=request.user.id).exists():
-        recipe.likes.remove(request.user)
-        is_liked=False
+# @api_view(['POST', ])
+# def like_recipe(request):
+#     recipe = get_object_or_404(Recipe, id=request.POST.get('id'))
+#     is_liked = False
+#     if recipe.likes.filter(id=request.user.id).exists():
+#         recipe.likes.remove(request.user)
+#         is_liked=False
+#     else:
+#         recipe.likes.add(request.user)
+#         is_liked=True
+#     return Http404
+
+
+@api_view(['POST'])
+def signup(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        User.objects.create_user(
+            username=serializer.data['username'],
+            email=serializer.data['email'],
+            password=serializer.initial_data['password']
+        )
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        recipe.likes.add(request.user)
-        is_liked=True
-    return Http404
+        return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST', ])

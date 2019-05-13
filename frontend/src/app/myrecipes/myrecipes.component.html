@@ -1,32 +1,89 @@
 <form>
   <div class="form-group">
-    <label for="nameOfRecipe">First Name</label>
+    <label for="nameOfRecipe">Name of your recipe: </label>
     <input [(ngModel)]="name"
-      id="nameOfRecipe" type="text" class="form-control">
+      id="nameOfRecipe" type="text" class="form-control" required>
+  </div>
+
+<!--  <div class="form-group">-->
+<!--    <label for="ingredients">List of ingredients</label>-->
+<!--    <input id="ingredients" required>-->
+<!--  </div>-->
+
+  <div class="form-group">
+    <label for="method">Method: </label>
+    <textarea id="method" cols="50" rows="10" class="form-control" required></textarea>
   </div>
 
   <div class="form-group">
-    <label for="method">Method</label>
-    <textarea id="method" cols="50" rows="10" class="form-control"></textarea>
+    <label for="ccal">Calories per serving: </label>
+    <input id="ccal" type="number" required>
   </div>
+
   <div class="form-group">
-    <label for="ingredients">List of ingredients</label>
-    <input id="ingredients">
+    <label for="time">Time to prepare: </label>
+    <input id="time" type="number"><span>minutes</span>
   </div>
-  <button class="btn btn-primary">Submit</button>
+
+  <div class="form-group">
+    <label for="type">Select type: </label>
+    <select class="form-control" [(ngModel)]="type" id="type" required>
+      <option [ngValue]="t.id" *ngFor="let t of types">{{t.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="cuisine">Enter cuisine: </label>
+    <input id="cuisine" type="text" required>
+  </div>
+
+  <div class="form-group">
+    <label for="diet">Select diet type: </label>
+    <select id="diet" class="form-control" [(ngModel)]="diet" required>
+      <option *ngFor="let d of diets" [ngValue]="d.id">{{d.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="diff">Select difficulty of recipe: </label>
+    <select id="diff" class="form-control" [(ngModel)]="difficulty" required>
+      <option *ngFor="let d of difficulties" [ngValue]="d.id">{{d.name}}</option>
+    </select>
+  </div>
+
+<!--  <div class="form-group">-->
+<!--    <label for="photo">Upload a photo of your meal: </label>-->
+<!--    <input id="photo" required>-->
+<!--  </div>-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Choose File</h3>
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="file" name="image"  />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<!--  <button class="btn btn-primary">Submit</button>-->
 </form>
 
 
 
 
-id: number;
-name: string;
-ingredients: Ingredient[];
-method: string;
-ccal: number;
-type: Type;
-time: number;
-cuisine: Cuisine;
-diet: Diet;
-difficulty: Difficulty;
-photo: string;
+<!--id: number;-->
+<!--name: string;-->
+<!--ingredients: Ingredient[];-->
+<!--method: string;-->
+<!--ccal: number;-->
+<!--type: Type;-->
+<!--time: number;-->
+<!--cuisine: Cuisine;-->
+<!--diet: Diet;-->
+<!--difficulty: Difficulty;-->
+<!--photo: string;-->
