@@ -9,8 +9,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # cbv
     path('home/recipelist/', views.RecipeList.as_view()),
-    path('home/recipe/<int:pk>/', views.RecipeV.as_view()),
+    # path('home/recipe/<int:pk>/', views.RecipeV.as_view()),
     # gcbv
+    path('home/recipe/<int:pk>/', views.RecipeDetail.as_view()),
     path('home/ingredient/', views.IngredientV.as_view()),
     path('home/difficultylist/', views.DifficultyList.as_view()),
     path('home/userlist/', views.UserList.as_view()),

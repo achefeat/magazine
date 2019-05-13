@@ -10,6 +10,15 @@ class RecipeList(generics.ListCreateAPIView):
     permission_classes = (AllowAny, )
 
 
+class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RecipeSerializer
+
+    def get_queryset(self):
+        print(Recipe.objects.filter(id=self.kwargs['pk']))
+        queryset = Recipe.objects.filter(id=self.kwargs['pk'])
+        return queryset
+
+
 class DifficultyList(generics.ListAPIView):
     queryset = Difficulty.objects.all()
     serializer_class = DifficultySerializer

@@ -11,7 +11,7 @@ import {CuisineComponent} from './cuisine/cuisine.component';
 
 const routes: Routes = [
   {path: 'main', component: MainComponent},
-  {path: 'recipe', component: RecipeComponent},
+  {path: 'recipe/:id', component: RecipeComponent},
   {path: 'myRecipes', component: MyrecipesComponent},
   {path: 'diff', component: DiffComponent},
   {path: 'diet', component: DietComponent},
