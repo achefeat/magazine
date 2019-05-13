@@ -18,6 +18,9 @@ class Like(models.Model):
     def __str__(self):
         return f'{self.id} like by {self.liked_by.username} of {self.recipe.id} recipe'
 
+    # def sum(self):
+    #     return
+
     class Meta:
         verbose_name = 'Like'
         verbose_name_plural = 'Likes'
@@ -70,6 +73,9 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.name
+
+    def sum(self):
+        return self.likes.count()
 
 
 class Comments(models.Model):

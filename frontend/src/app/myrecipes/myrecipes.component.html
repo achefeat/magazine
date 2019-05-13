@@ -1,14 +1,33 @@
 <form>
   <div class="form-group">
     <label for="nameOfRecipe">Name of your recipe: </label>
-    <input [(ngModel)]="name"
-      id="nameOfRecipe" type="text" class="form-control" required>
+    <input [(ngModel)]="rname" name="nameRecipe" id="nameOfRecipe" type="text" class="form-control" required>
   </div>
 
 <!--  <div class="form-group">-->
-<!--    <label for="ingredients">List of ingredients</label>-->
 <!--    <input id="ingredients" required>-->
 <!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="ingredients">List of ingredients</label>-->
+<!--    <select id="ingredients"-->
+<!--            multiple data-max-options="20">-->
+<!--      <option [ngValue]="i.id" *ngFor="let i of ingrList" selected>{{i.name}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+  <div class="autocomplete">
+    <div class="chips-input-container">
+      <div class="user-chip" *ngFor="let ing of userSelects">
+        {{ing.name}}
+        <span (click)="deleteSelects(ing)" class="delete-icon-chip">&#10006;</span>
+      </div>
+          <label for="ingredients">List of ingredients</label>
+      <input name="suggestion" id="ingredients" type="text" placeholder=" Select ingredients" (click)="suggest()" [(ngModel)]="userSelectsString">
+    </div>
+
+    <div class="autocomplete-items" *ngIf="show">
+      <div *ngFor="let i of ingrList" [ngClass]="isSelected(i) ? 'selected-suggestion' : ''" (click)="selectSuggestion(i)">{{ i.name }}</div>
+    </div>
+  </div>
 
   <div class="form-group">
     <label for="method">Method: </label>
@@ -64,7 +83,7 @@
             <input type="file" name="image"  />
           </div>
           <div class="form-group">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" (click)="createRecipe()">Submit</button>
           </div>
         </form>
       </div>

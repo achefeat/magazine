@@ -6,9 +6,9 @@
   margin:0px; 
   }
 .mainBlock{
-  background-color: wheat;
+  background-color: #bcf56a;
   opacity: 0.8;
-  color: blueviolet;
+  color: #6426a9;
   font-family: 'Kaushan Script', cursive;
   display: flex;
   flex-direction: column;
@@ -40,12 +40,12 @@
 }
 .header{
   font-size: 1.8em;
-  color: mediumpurple;
+  color: #523d7b;
   text-align: center;
 }
 .list{
   font-size: 1.0em;
-  color: plum;
+  color: #5a5edd;
 }
 .listLinks:hover{
   /* text-decoration: underline; */
@@ -66,6 +66,26 @@ a{
   height: 500px;
   width: 400px;
   margin-top: -150px;
-  margin-left: 500px;
+  margin-left: 370px;
   margin-bottom: -160px;
+}
+#auth label{
+  padding-right: 5px;
+}
+#auth{
+  position: fixed;
+  margin-left: 8px;
+
+}
+
+#auth button{
+  margin-top: 5px;
+  margin-right: 45px;
+  margin-bottom: 5px;
+  color: #8f8889;
+  background-color: #f570d0;
+  border-radius: 30%;
+  width: 80px;
+  box-shadow: none;
+  border-color: rgba(255, 248, 249, 0.22);
 }

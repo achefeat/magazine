@@ -14,20 +14,23 @@ export class MainComponent implements OnInit {
   public recipe: Recipe;
   // public ingredients: Ingredient[] = [];
   public logged = true;
-
+  public numLikes: number;
 
   ngOnInit() {
     this.provider.getRecipes().then(res => {
       this.recipes = res;
     });
   }
-  // likeRecipe(recipe: Recipe) {
-  //   this.provider.like(recipe).then(res => {});
-  // }
-  // getCurRecipe(recipe: Recipe) {
-  //   this.provider.getCurrentRecipe(recipe).then(res => {
-  //     this.recipe = res;
-  //   });
+  likeRecipe(recipe: Recipe) {
+    this.provider.like(recipe.id).then(res => {});
+  }
+  getCurRecipe(recipe: Recipe) {
+    this.provider.getCurrentRecipe(recipe.id).then(res => {
+      this.recipe = res;
+    });
+  }
+  // getNumLikes(recipe: Recipe) {
+  //   this.provider.getLike(recipe.id).then(res => {});
   // }
 }
 

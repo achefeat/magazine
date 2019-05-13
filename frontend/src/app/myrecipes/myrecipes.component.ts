@@ -13,7 +13,7 @@ export class MyrecipesComponent implements OnInit {
 
   constructor(private provider: ProviderService ) {}
 
-  public name: any;
+  public rname: string;
   public recipeList: Recipe[] = [];
   public ingrList: Ingredient[] = [];
   public  method: Text;
@@ -26,22 +26,45 @@ export class MyrecipesComponent implements OnInit {
   public  diets: Diet[] = [];
   public  difficulty: Difficulty;
   public  difficulties: Difficulty[] = [];
-  public  photo: string;
+  public  photo: ImageBitmap;
+  public show = false;
+  userSelects = [];
+  userSelectsString = '';
 
   ngOnInit() {
     this.provider.getDiets().then(res => this.diets = res);
     this.provider.getDiffs().then(res => this.difficulties = res);
     this.provider.getTypes().then(res => this.types = res);
+    this.provider.getIngr().then(res => this.ingrList = res);
   }
-  // createRecipe() {
-  //   if (this.name !== '') {
-  //     this.provider.createRecipe(this.name, this.ingrList, this.method, this.ccal, this.type,
-  //       this.time, this.cuisine, this.diet, this.difficulty, this.photo).then(res => {
-  //       this.name = '';
-  //       this.recipeList.push(res);
-  //     });
-  //   }
-  // }
+  createRecipe() {
+    if (this.rname !== '') {
+      this.provider.createRecipe(this.rname, this.userSelects, this.method, this.ccal,
+        this.time, this.type, this.cuisine, this.diet, this.difficulty, this.photo).then(res => {
+        this.rname = '';
+        this.recipeList.push(res);
+      });
+    }
+  }
+
+  suggest() {
+    this.show = true;
+  }
+  isSelected(s: any) {
+    return this.userSelects.findIndex((item) => item.id === s.id) > -1;
+  }
+  selectSuggestion(s) {
+    this.userSelects.find((item) => item.id === s.id) ?
+      this.userSelects = this.userSelects.filter((item) => item.id !== s.id) :
+      this.userSelects.push(s);
+  }
+  deleteSelects(s) {
+    this.userSelects = this.userSelects.filter((item) => item.id !== s.id);
+  }
+  assignToNgModel() {
+    this.userSelectsString = '';
+    this.userSelects.map((item) => this.userSelectsString += item.name + ' ');
+  }
   onSubmit() {
     this.provider.onSubmit();
   }

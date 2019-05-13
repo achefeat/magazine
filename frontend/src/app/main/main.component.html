@@ -7,9 +7,8 @@
       <h5>Difficulty: {{r.difficulty.name}}</h5>
       <h5>{{r.ccal}} calories per 100g</h5>
       <h5>Will be ready in {{r.time}} minutes</h5>
-<!--      <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>-->
-<!--      <img [src]="r.photo" height="150" width="100">-->
-      <img src="{{r.photo}}" height="150" width="100">
+      <h6><button (click)="likeRecipe(r)">{{r.likes.length}}</button> Likes</h6>
+      <img src="{{r.photo}}" height="180" width="140">
 <!--      pochemu on ne smotrit na http://localhost:8000 i iwet img na 4200????????-->
     </div>
   </div>
@@ -17,5 +16,5 @@
 <!--    {{i.name}}-->
 <!--  </div>-->
 </div>
-<button routerLink="/myRecipes">New recipe</button>
+<button class="newBut" routerLink="/myRecipes">New recipe</button>
 

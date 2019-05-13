@@ -4,7 +4,7 @@ from django.http import Http404
 from main.serializers import *
 
 
-class RecipeList(generics.ListAPIView):
+class RecipeList(generics.ListCreateAPIView):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     permission_classes = (AllowAny, )

@@ -44,13 +44,13 @@ class LikeSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     ccal = serializers.IntegerField(read_only=True, required=False)
-    # likes = UserSerializer(read_only=True, many=True)
+    # like = serializers.IntegerField(default=Recipe.sum())
     ingredients = IngredientSerializer(many=True)
     cuisine = CuisineSerializer()
     diet = DietSerializer()
     type = TypeSerializer()
     difficulty = DifficultySerializer()
-    photo = serializers.ImageField()
+    photo = serializers.ImageField(required=False)
     # comments = UserSerializer(read_only=True, many=True)
     created_by = UserSerializer(read_only=True)
 

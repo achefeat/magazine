@@ -8,10 +8,14 @@ import {Cuisine, Ingredient, Recipe, Type, Difficulty, Diet} from '../models/mod
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public types: Type[] = [];  
-  public diff: Difficulty[] = [];  
+  public types: Type[] = [];
+  public diff: Difficulty[] = [];
   public diet: Diet[] = [];
-  public cuisine: Cuisine[]= [];
+  public cuisine: Cuisine[] = [];
+  public recipes: Recipe[] = [];
+  public logged = false;
+  public username: any;
+  public password: any;
   constructor(private provider: ProviderService ) {}
 
 
@@ -30,4 +34,25 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  //
+
+  auth() {
+    if (this.username !== '' && this.password !== '') {
+      this.provider.auth(this.username, this.password).then( res => {
+        localStorage.setItem('token', res.token);
+        this.logged = true;
+
+        // this.provider.getRecipes().then(r => {
+        //   this.recipes = r;
+        // });
+        console.log('OK');
+      });
+    }
+  }
+  logout() {
+    this.provider.logout().then( res => {
+      localStorage.clear();
+      this.logged = false;
+    });
+  }
 }
