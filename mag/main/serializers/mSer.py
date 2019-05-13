@@ -50,7 +50,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     diet = DietSerializer()
     type = TypeSerializer()
     difficulty = DifficultySerializer()
-    photo = serializers.ImageField()
+    photo = serializers.ImageField(required=False)
     # comments = UserSerializer(read_only=True, many=True)
     created_by = UserSerializer(read_only=True)
 

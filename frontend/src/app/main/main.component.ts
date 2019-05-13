@@ -21,13 +21,13 @@ export class MainComponent implements OnInit {
       this.recipes = res;
     });
   }
-  // likeRecipe(recipe: Recipe) {
-  //   this.provider.like(recipe).then(res => {});
-  // }
-  // getCurRecipe(recipe: Recipe) {
-  //   this.provider.getCurrentRecipe(recipe).then(res => {
-  //     this.recipe = res;
-  //   });
-  // }
+  likeRecipe(recipe: Recipe) {
+    this.provider.like(recipe).then(res => {});
+  }
+  getCurRecipe(recipe: Recipe) {
+    this.provider.getCurrentRecipe(recipe).then(res => {
+      this.recipe = res;
+    });
+  }
 }
 

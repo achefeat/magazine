@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ProviderService} from './services/provider.service';
 import {Recipe} from './models/model';
 
@@ -8,13 +8,16 @@ import {Recipe} from './models/model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private provider: ProviderService) { }
-  //
+  @Input() name: string;
+
   public recipes: Recipe[] = [];
   title = 'a-Chef-eat!';
   public logged = false;
   public username: any;
   public password: any;
+  constructor(private provider: ProviderService) { }
+  //
+
   auth() {
     if (this.username !== '' && this.password !== '') {
       this.provider.auth(this.username, this.password).then( res => {

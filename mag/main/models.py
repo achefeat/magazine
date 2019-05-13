@@ -18,6 +18,9 @@ class Like(models.Model):
     def __str__(self):
         return f'{self.id} like by {self.liked_by.username} of {self.recipe.id} recipe'
 
+    # def sum(self):
+    #     return
+
     class Meta:
         verbose_name = 'Like'
         verbose_name_plural = 'Likes'
@@ -67,9 +70,13 @@ class Recipe(models.Model):
     diet = models.ForeignKey(Diet, on_delete=models.DO_NOTHING, default=1)
     photo = models.ImageField(upload_to='media', default=None, null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    likes = models.CharField(dsum())
 
     def __str__(self):
         return self.name
+
+    def sum(self):
+        return self.likes.count()
 
 
 class Comments(models.Model):

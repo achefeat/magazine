@@ -15,9 +15,18 @@ export class ProviderService extends MainService {
   getRecipes(): Promise<Recipe[]> {
     return this.get('http://localhost:8000/home/recipelist/', {});
   }
-  createRecipe(name: string, ingredients: Ingredient[], method: Text, ccal: number, time: number, type: Type, cuisine: Cuisine, diet: Diet): Promise<Recipe> {
-    return this.post(`http://localhost:8000/home/recipe/`, {
-
+  createRecipe(name: string, ingredients: Ingredient[], method: Text, ccal: number,
+               time: number, type: Type, cuisine: Cuisine, diet: Diet, diff: Difficulty, photo: ImageBitmap): Promise<Recipe> {
+    return this.post('http://localhost:8000/home/recipelist/', {
+      name,
+      ingredients,
+      method,
+      ccal,
+      time,
+      type,
+      cuisine,
+      diet,
+      diff
     });
   }
 
@@ -28,7 +37,7 @@ export class ProviderService extends MainService {
   onSubmit() {
     const formData = new FormData();
     formData.append('file', this.fileData);
-    this.http.post('url/to/your/api', formData)
+    this.http.post('http://localhost:8000/home/recipelist/', formData)
       .subscribe(res => {
         console.log(res);
         alert('SUCCESS !!');
@@ -43,10 +52,8 @@ export class ProviderService extends MainService {
   getDiets(): Promise<Diet[]> {
     return this.get('http://localhost:8000/home/dietlist/', {});
   }
-  like(recipe: Recipe, likes: Likes): Promise<Recipe> {
-    return this.put(`http://localhost:8000/home/recipe/like/`, {
-      likes: likes.recipes
-    });
+  like(recipe: Recipe): Promise<Recipe> {
+    return this.post(`http://localhost:8000/home/recipe/like/`, {});
   }
   getCurrentRecipe(id: number): Promise<Recipe> {
     return this.get(`http://localhost:8000/home/recipe/${id}/`, {});
@@ -66,5 +73,9 @@ export class ProviderService extends MainService {
       email,
       password
     });
+  }
+
+  getIngr(): Promise<Ingredient[]> {
+    return this.get('http://localhost:8000/home/ingredientlist/', {});
   }
 }

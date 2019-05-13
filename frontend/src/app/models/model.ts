@@ -11,7 +11,7 @@ export interface Recipe {
   cuisine: Cuisine;
   diet: Diet;
   difficulty: Difficulty;
-  photo: string;
+  photo: ImageBitmap;
 }
 export interface Likes {
   id: number;
