@@ -13,6 +13,10 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { SignupComponent } from './signup/signup.component';
 import {AuthInterceptor} from './AuthInterceptor';
 import { MyrecipesComponent } from './myrecipes/myrecipes.component';
+import { DiffComponent } from './diff/diff.component';
+import { DietComponent } from './diet/diet.component';
+import { TypeComponent } from './type/type.component';
+import { CuisineComponent } from './cuisine/cuisine.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { MyrecipesComponent } from './myrecipes/myrecipes.component';
     HeaderComponent,
     RecipeComponent,
     SignupComponent,
-    MyrecipesComponent
+    MyrecipesComponent,
+    DiffComponent,
+    DietComponent,
+    TypeComponent,
+    CuisineComponent
   ],
   imports: [
     BrowserModule,

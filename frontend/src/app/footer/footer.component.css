@@ -8,7 +8,7 @@
     flex-direction: column;
     list-style-type: none;
     border: 0px solid yellow;
-
+background-color: wheat;
     align-content: space-between;
     height: 90%;
 }
@@ -54,11 +54,13 @@
     display: flex;
     align-items: flex-end;
 }
-
+.about{
+    margin-top: 50px;
+}
 
 .icons{
     color: yellowgreen;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 .icons:hover{
     opacity: 0.6;
@@ -69,11 +71,12 @@
     /* text-align: center; */
 }
 .header{
-    font-size: 1.4em;
+    font-size: 1.9em;
     color: mediumpurple;
     text-align: center;
 }
 .list{
+    font-size: 1.1em;
     color: plum;
 }
 .listLinks:hover{

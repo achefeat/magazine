@@ -5,28 +5,28 @@
       <span class="header">Difficulty </span>
       <span><hr> </span>
       <div *ngFor="let d of diff ">
-        <span class="list"><a class="list listLinks">{{d.name}}</a></span>
+        <span class="list"><a class="list listLinks" routerLink="/diff">{{d.name}}</a></span>
       </div>
     </div> 
     <div class="diet"> 
         <span class="header">Diet</span>
         <span><hr> </span>
         <div *ngFor="let d of diet ">
-          <span class="list"><a class="list listLinks">{{d.name}}</a></span>
+          <span class="list"><a class="list listLinks" routerLink="/diet">{{d.name}}</a></span>
         </div>
       </div> 
     <div class="type"> 
           <span class="header">Meal Type</span>
           <span><hr> </span>
           <div *ngFor="let t of types ">
-            <span class="list"><a class="list listLinks">{{t.name}}</a></span>
+            <span class="list"><a class="list listLinks" routerLink="/type">{{t.name}}</a></span>
           </div>
     </div> 
     <div class="cuisine"> 
         <span class="header">Cuisine </span>
         <span><hr> </span>
         <div *ngFor="let c of cuisine ">
-          <span class="list"><a class="list listLinks">{{c.name}}</a></span>
+          <span class="list"><a class="list listLinks" routerLink="/cuisine">{{c.name}}</a></span>
         </div>
       </div> 
   
