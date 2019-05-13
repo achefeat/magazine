@@ -3,7 +3,7 @@
   color: white;
   text-align: center;
   font-size: 25px;
-  background-color: rgba(6, 134, 57, 0.31);
+  background-color: rgba(6, 134, 57, 0.68);
   width: 500px;
   align-content: center;
   margin-left: 320px;
@@ -21,7 +21,7 @@ button{
   border-color: rgba(255, 248, 249, 0.22);
 }
 h5{
-  color: #4b296c;
+  color: #23f0b0;
 }
 h3{
   color: #fff466;
