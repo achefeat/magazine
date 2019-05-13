@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
     this.provider.like(recipe).then(res => {});
   }
   getCurRecipe(recipe: Recipe) {
-    this.provider.getCurrentRecipe(recipe).then(res => {
+    this.provider.getCurrentRecipe(recipe.id).then(res => {
       this.recipe = res;
     });
   }

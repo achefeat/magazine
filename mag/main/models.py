@@ -70,7 +70,6 @@ class Recipe(models.Model):
     diet = models.ForeignKey(Diet, on_delete=models.DO_NOTHING, default=1)
     photo = models.ImageField(upload_to='media', default=None, null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    likes = models.CharField(dsum())
 
     def __str__(self):
         return self.name

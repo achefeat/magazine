@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProviderService} from '../services/provider.service';
+import {Cuisine, Ingredient, Recipe, Type, Difficulty, Diet} from '../models/model';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public types: Type[] = [];  
+  public diff: Difficulty[] = [];  
+  public diet: Diet[] = [];
+  public cuisine: Cuisine[]= [];
+  constructor(private provider: ProviderService ) {}
 
-  constructor() { }
 
   ngOnInit() {
+    this.provider.getTypes().then(res => {
+      this.types = res;
+    });
+    this.provider.getDiffs().then(res => {
+      this.diff = res;
+    });
+    this.provider.getDiets().then(res => {
+      this.diet = res;
+    });
+    this.provider.getCuisine().then(res => {
+      this.cuisine = res;
+    });
   }
 
 }

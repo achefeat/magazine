@@ -44,7 +44,7 @@ class LikeSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     ccal = serializers.IntegerField(read_only=True, required=False)
-    # likes = UserSerializer(read_only=True, many=True)
+    # like = serializers.IntegerField(default=Recipe.likes.count())
     ingredients = IngredientSerializer(many=True)
     cuisine = CuisineSerializer()
     diet = DietSerializer()

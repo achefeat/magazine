@@ -46,6 +46,9 @@ export class ProviderService extends MainService {
   getTypes(): Promise<Type[]> {
     return this.get('http://localhost:8000/home/typelist/', {});
   }
+  getCuisine(): Promise<Cuisine[]> {
+    return this.get('http://localhost:8000/home/cuisinelist/', {});
+  }
   getDiffs(): Promise<Difficulty[]> {
     return this.get('http://localhost:8000/home/difficultylist/', {});
   }
