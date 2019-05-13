@@ -9,6 +9,7 @@ export interface Recipe {
   type: Type;
   time: number;
   cuisine: Cuisine;
+  likes: Likes;
   diet: Diet;
   difficulty: Difficulty;
   photo: ImageBitmap;

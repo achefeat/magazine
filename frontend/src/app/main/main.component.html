@@ -7,7 +7,7 @@
       <h5>Difficulty: {{r.difficulty.name}}</h5>
       <h5>{{r.ccal}} calories per 100g</h5>
       <h5>Will be ready in {{r.time}} minutes</h5>
-      <h4><button (click)="likeRecipe(r)">Like</button></h4>
+      <h4><button (click)="likeRecipe(r)">Like</button>{{r.likes.length}}</h4>
       <img src="{{r.photo}}" height="150" width="100">
 <!--      pochemu on ne smotrit na http://localhost:8000 i iwet img na 4200????????-->
     </div>

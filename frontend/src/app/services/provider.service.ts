@@ -55,9 +55,12 @@ export class ProviderService extends MainService {
   getDiets(): Promise<Diet[]> {
     return this.get('http://localhost:8000/home/dietlist/', {});
   }
-  like(recipe: Recipe): Promise<Recipe> {
-    return this.post(`http://localhost:8000/home/recipe/like/`, {});
+  like(recipe: number): Promise<Recipe> {
+    return this.post(`http://localhost:8000/home/likes/`, {
+      recipe,
+    });
   }
+  // getLike(recipe:)
   getCurrentRecipe(id: number): Promise<Recipe> {
     return this.get(`http://localhost:8000/home/recipe/${id}/`, {});
   }

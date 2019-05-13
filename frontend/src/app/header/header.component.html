@@ -1,4 +1,20 @@
+
 <div class="mainBlock">
+  <div id="auth">
+    <ng-container class="ng-header" *ngIf="!logged">
+      <div>
+        <div>
+          <label for="user">Username</label>
+          <input id="user" type="text" [(ngModel)]="username">
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input id="password" type="password" [(ngModel)]="password">
+        </div>
+        <button class="but" (click)="auth()">LOG IN</button>
+      </div>
+    </ng-container>
+  </div>
   <img src="../../assets/logo_transparent.png" id="img">
   <div class="mainBlock1">
     <div class="menu"> 
