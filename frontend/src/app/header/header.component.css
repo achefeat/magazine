@@ -6,9 +6,9 @@
   margin:0px; 
   }
 .mainBlock{
-  background-color: #dff5a5;
+  background-color: #bcf56a;
   opacity: 0.8;
-  color: blueviolet;
+  color: #6426a9;
   font-family: 'Kaushan Script', cursive;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@
 }
 .header{
   font-size: 1.8em;
-  color: mediumpurple;
+  color: #523d7b;
   text-align: center;
 }
 .list{

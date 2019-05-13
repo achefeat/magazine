@@ -11,7 +11,8 @@
 /*  background-position:50% 50%;*/
 /*}*/
 #recipelist{
-  color: white;
+  margin-top: 30px;
+  color: rgba(0, 0, 0, 0.97);
   text-align: center;
   font-size: 25px;
   background-color: rgba(6, 134, 57, 0.31);
@@ -21,13 +22,17 @@
   padding-top: 30px;
   padding-bottom: 40px;
 }
+.newBut{
+  position: fixed;
+}
 button{
   margin-top: 5px;
   color: #8f8889;
   background-color: #fff8f9;
   border-radius: 30%;
-  width: 180px;
+  width: 70px;
   box-shadow: none;
   opacity: 60%;
   border-color: rgba(255, 248, 249, 0.22);
 }
+
