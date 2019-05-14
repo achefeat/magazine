@@ -17,6 +17,7 @@ import { DiffComponent } from './diff/diff.component';
 import { DietComponent } from './diet/diet.component';
 import { TypeComponent } from './type/type.component';
 import { CuisineComponent } from './cuisine/cuisine.component';
+import { MyrecipeslistComponent } from './myrecipeslist/myrecipeslist.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CuisineComponent } from './cuisine/cuisine.component';
     DiffComponent,
     DietComponent,
     TypeComponent,
-    CuisineComponent
+    CuisineComponent,
+    MyrecipeslistComponent
   ],
   imports: [
     BrowserModule,

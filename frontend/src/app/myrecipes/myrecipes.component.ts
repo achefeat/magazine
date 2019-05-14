@@ -37,15 +37,16 @@ export class MyrecipesComponent implements OnInit {
     this.provider.getTypes().then(res => this.types = res);
     this.provider.getIngr().then(res => this.ingrList = res);
   }
-  createRecipe() {
+  createRecipeForUser() {
     if (this.rname !== '') {
-      this.provider.createRecipe(this.rname, this.userSelects, this.method, this.ccal,
+      this.provider.createRecipeForUser(this.rname, this.userSelects, this.method, this.ccal,
         this.time, this.type, this.cuisine, this.diet, this.difficulty, this.photo).then(res => {
         this.rname = '';
         this.recipeList.push(res);
       });
     }
   }
+  myrecipes() {}
 
   suggest() {
     this.show = true;

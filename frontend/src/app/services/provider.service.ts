@@ -15,9 +15,9 @@ export class ProviderService extends MainService {
   getRecipes(): Promise<Recipe[]> {
     return this.get('http://localhost:8000/home/recipelist/', {});
   }
-  createRecipe(name: string, ingredients: Ingredient[], method: Text, ccal: number,
-               time: number, type: Type, cuisine: Cuisine, diet: Diet, diff: Difficulty, photo: ImageBitmap): Promise<Recipe> {
-    return this.post('http://localhost:8000/home/recipelist/', {
+  createRecipeForUser(name: string, ingredients: Ingredient[], method: Text, ccal: number,
+                      time: number, type: Type, cuisine: Cuisine, diet: Diet, diff: Difficulty, photo: ImageBitmap): Promise<Recipe> {
+    return this.post('http://localhost:8000/home/recipeuser/', {
       name,
       ingredients,
       method,
@@ -29,7 +29,25 @@ export class ProviderService extends MainService {
       diff
     });
   }
-
+  getRecForUser(): Promise<Recipe[]> {
+    return this.get('http://localhost:8000/home/recipeuser/', {});
+  }
+  updateRecipe(recipe: Recipe): Promise <Recipe[]> {
+    return this.put(`http://localhost:8000/home/recipe/${recipe.id}/`, {
+      name: recipe.name,
+      ingredients: recipe.ingredients,
+      method: recipe.method,
+      ccal: recipe.ccal,
+      time: recipe.time,
+      type: recipe.type,
+      cuisine: recipe.cuisine,
+      diet: recipe.diet,
+      difficulty: recipe.difficulty
+    });
+  }
+  deleteRecipe(recipe: Recipe): Promise<Recipe[]> {
+    return this.delet(`http://localhost:8000/home/recipe/${recipe.id}/`, {});
+  }
   fileProgress(fileInput: any) {
     this.fileData = <File> fileInput.target.files[0];
   }
