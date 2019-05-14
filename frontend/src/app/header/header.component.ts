@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   public logged = false;
   public username: any;
   public password: any;
+
   constructor(private provider: ProviderService ) {}
 
 
@@ -41,7 +42,8 @@ export class HeaderComponent implements OnInit {
       this.provider.auth(this.username, this.password).then( res => {
         localStorage.setItem('token', res.token);
         this.logged = true;
-
+        this.username = '';
+        this.password = '';
         // this.provider.getRecipes().then(r => {
         //   this.recipes = r;
         // });

@@ -3,7 +3,7 @@
   color: white;
   text-align: center;
   font-size: 25px;
-  background-color: rgba(6, 134, 57, 0.31);
+  background-color: rgba(6, 134, 57, 0.68);
   width: 500px;
   align-content: center;
   margin-left: 320px;
@@ -19,4 +19,22 @@ button{
   box-shadow: none;
   opacity: 60%;
   border-color: rgba(255, 248, 249, 0.22);
+}
+h5{
+  color: #23f0b0;
+}
+h3{
+  color: #fff466;
+}
+.com{
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  background-color: rgba(90, 94, 221, 0.68);
+  width: 500px;
+  align-content: center;
+  margin-left: 320px;
+  padding-top: 30px;
+  padding-bottom: 40px;
 }

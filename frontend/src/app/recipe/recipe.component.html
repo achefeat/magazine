@@ -11,11 +11,21 @@
 <!--        <h4><button (click)="likeRecipe(r)">{{r.likes}}</button> likes</h4>-->
       </div>
       <div>
-<!--        <img [src]="recipe.photo" alt="photo">-->
+        <img [src]="recipe.photo" alt="photo" width="200" height="350">
       </div>
+        <h3>Ingredients:</h3>
         <div *ngFor="let i of recipe.ingredients">
           {{i.name}}
         </div>
+      <h3>Methodology of recipe: </h3><p>{{recipe.method}}</p>
     </div>
   </ng-container>
+</div>
+
+<div>
+  <div class="com">
+    <h4>Write a comment: </h4>
+    <textarea id="com" cols="60" rows="5" class="form-control" required></textarea><br>
+    <button>Send</button>
+  </div>
 </div>

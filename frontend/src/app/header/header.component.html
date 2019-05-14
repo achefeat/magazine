@@ -12,10 +12,19 @@
           <input id="password" type="password" [(ngModel)]="password">
         </div>
         <button class="but" (click)="auth()">LOG IN</button>
+        <h3>or</h3>
+        <button class="but" routerLink="/signup">SIGN UP</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="logged">
+      <div>
+        <button (click)="logout()">LOG OUT</button>
+        <button routerLink="/myRecipes">MY RECIPES NEW</button>
+        <button routerLink="/myRecipesList">MY RECIPES LIST</button>
       </div>
     </ng-container>
   </div>
-  <img src="../../assets/logo_transparent.png" id="img">
+  <img src="../../assets/logo_transparent.png" id="img" routerLink="/main">
   <div class="mainBlock1">
     <div class="menu"> 
       <span class="header">Difficulty </span>

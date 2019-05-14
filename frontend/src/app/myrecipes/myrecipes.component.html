@@ -14,7 +14,7 @@
 <!--      <option [ngValue]="i.id" *ngFor="let i of ingrList" selected>{{i.name}}</option>-->
 <!--    </select>-->
 <!--  </div>-->
-  <div class="autocomplete">
+  <div class="form-group">
     <div class="chips-input-container">
       <div class="user-chip" *ngFor="let ing of userSelects">
         {{ing.name}}
@@ -25,7 +25,7 @@
     </div>
 
     <div class="autocomplete-items" *ngIf="show">
-      <div *ngFor="let i of ingrList" [ngClass]="isSelected(i) ? 'selected-suggestion' : ''" (click)="selectSuggestion(i)">{{ i.name }}</div>
+      <div *ngFor="let i of ingrList" [ngClass]="isSelected(i) ? 'selected-suggestion' : ''" (click)="selectSuggestion(i)"><p>{{ i.name }}</p></div>
     </div>
   </div>
 
@@ -70,26 +70,21 @@
     </select>
   </div>
 
-<!--  <div class="form-group">-->
-<!--    <label for="photo">Upload a photo of your meal: </label>-->
-<!--    <input id="photo" required>-->
-<!--  </div>-->
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h3>Choose File</h3>
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <input type="file" name="image"  />
+            <label for="file">Choose file: </label>
+            <input id="file" type="file" name="image"  />
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" (click)="createRecipe()">Submit</button>
+            <button class="btn btn-primary" (click)="createRecipeForUser()">Submit</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-<!--  <button class="btn btn-primary">Submit</button>-->
 </form>
 
 

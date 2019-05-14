@@ -1,6 +1,6 @@
 <div *ngFor="let r of recipes" id="recipelist" >
   <div *ngIf="logged">
-    <h2 routerLink="/recipe" routerLinkActive="" class="listLinks" >{{r.cuisine.name}} {{r.name}}</h2>
+    <h2 routerLink="/recipe/{{r.id}}" routerLinkActive="" class="listLinks" >{{r.cuisine.name}} {{r.name}}</h2>
     <div>
       <h5>Best for: {{r.type.name}}</h5>
       <h5>Diet type: {{r.diet.name}}</h5>
@@ -16,5 +16,5 @@
 <!--    {{i.name}}-->
 <!--  </div>-->
 </div>
-<button class="newBut" routerLink="/myRecipes">New recipe</button>
+<!--<button class="newBut" routerLink="/myRecipes">New recipe</button>-->
 
