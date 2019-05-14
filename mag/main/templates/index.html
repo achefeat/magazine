@@ -1,0 +1,21 @@
+
+{% extends 'footer.html' %}
+{% block body %}
+{#{% for recepies in recepies %}#}
+{#    <h4>{{ recepies.name }}</h4>#}
+{#h4#}
+
+    <div>
+      <h5>Best for: Type</h5>
+      <h5>Diet type: Diet</h5>
+      <h5>Difficulty: Diff</h5>
+      <h5> calories per 100g</h5>
+      <h5>Will be ready in 50 minutes</h5>
+      <h6><button (click)="likeRecipe(r)">{{r.likes.length}}</button> Likes</h6>
+      <img  height="180" width="140">
+<!--      pochemu on ne smotrit na http://localhost:8000 i iwet img na 4200????????-->
+    </div>
+
+{% endblock %}
+
+
