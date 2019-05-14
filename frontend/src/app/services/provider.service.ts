@@ -74,7 +74,7 @@ export class ProviderService extends MainService {
     return this.post(`http://localhost:8000/home/logout/`, {});
   }
   signup(username: string, email: string, password: string): Promise<any> {
-    return this.post('http://localhost:8000/shop/signup/', {
+    return this.post('http://localhost:8000/home/signup/', {
       username,
       email,
       password

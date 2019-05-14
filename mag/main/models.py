@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class RecipeManager(models.Manager):
+    def for_user(self, user):
+        return self.filter(created_by=user)
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=200)
     ccal = models.IntegerField()
