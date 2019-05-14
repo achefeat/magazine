@@ -8,6 +8,7 @@ import {DietComponent} from './diet/diet.component';
 import {TypeComponent} from './type/type.component';
 import {CuisineComponent} from './cuisine/cuisine.component';
 import {SignupComponent} from './signup/signup.component';
+import {MyrecipeslistComponent} from './myrecipeslist/myrecipeslist.component';
 
 
 const routes: Routes = [
@@ -18,9 +19,8 @@ const routes: Routes = [
   {path: 'diet', component: DietComponent},
   {path: 'type', component: TypeComponent},
   {path: 'cuisine', component: CuisineComponent},
-  {path: 'signup', component: SignupComponent}
-
-
+  {path: 'signup', component: SignupComponent},
+  {path: 'myRecipesList', component: MyrecipeslistComponent}
 ];
 
 @NgModule({
