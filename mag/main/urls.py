@@ -24,6 +24,7 @@ urlpatterns = [
     path('home/ingredientlist/', views.showIngredients),
     path('home/login/', views.login),
     path('home/logout/', views.logout),
+    path('', views.index),
 ]
 
 if settings.DEBUG:

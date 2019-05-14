@@ -7,6 +7,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
 from django.shortcuts import Http404
+from django.shortcuts import render
 
 
 @api_view(['GET', 'POST'])
@@ -64,3 +65,9 @@ def login(request):
 def logout(request):
     request.auth.delete()
     return Response(status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def index(request):
+
+    return render(request, 'index.html')
+
